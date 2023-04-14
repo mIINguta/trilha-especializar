@@ -1,9 +1,31 @@
-import axios from 'axios'
+// estrutura de uma promise normal
+const promessa = new Promise((response, reject) => {
+  return response('notok')
+});
 
-Promise.all([
-  axios.get('https://api.github.com/users/mIINguta'),
-  axios.get('https://api.github.com/users/mIINguta/repos')
-]).then((responses) => {
-  console.log(responses[0].data.login)
-  console.log(responses[1].data.length)
-})
+promessa.then((response) => console.log(response));
+promessa.catch(erro => console.log(erro))
+promessa.finally(() => console.log('Finalizou'))
+
+//usando async
+
+async function start(){
+  const result = await promessa
+  console.log(result + "vtnc")
+} 
+start()
+
+//usando async de forma completa para substituir as 3 linhas (promessa.then,catch,finaly)
+
+async function startt(){
+  try{
+    const result = await promessa
+    console.log(result)
+
+  }catch (erro){
+    console.log(erro)
+  } 
+  finally {console.log('Finalizou')}
+
+}
+startt() 
