@@ -1,16 +1,9 @@
-import axios from "axios";
+import axios from 'axios'
 
-console.log("Consumindo api do Github");
-axios
-  .get("https://api.github.com/users/mIINguta")
-  .then((res) => {
-    const user = res.data;
-    console.log(user)
-    console.log(user.name)
-    console.log(user.location)
-        })
-
-  
-
-  .catch((err) => console.log(err))
-  .finally(() => console.log("A requisição finalizou"))
+Promise.all([
+  axios.get('https://api.github.com/users/mIINguta'),
+  axios.get('https://api.github.com/users/mIINguta/repos')
+]).then((responses) => {
+  console.log(responses[0].data.login)
+  console.log(responses[1].data.length)
+})
