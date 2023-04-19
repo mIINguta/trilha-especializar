@@ -7,8 +7,8 @@ console.log('Rodando')
 //midleware (ponte entre as requisições. usado para entender o q esta sendo requisitado)
 app.use(express.json())
 
-app.route('/').post((req,res) => {
-     res.send(`Chegou aqui marujo: ${req.body.nome}`)
-     console.log(req.body)
+app.route('/:nome').get((req,res) => {
+     res.send(req.params.nome)
+     console.log(req.params.nome)
 })
 
