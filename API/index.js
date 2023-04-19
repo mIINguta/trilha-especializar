@@ -7,8 +7,16 @@ console.log('Rodando')
 //midleware (ponte entre as requisições. usado para entender o q esta sendo requisitado)
 app.use(express.json())
 
-app.route('/:nome').get((req,res) => {
-     res.send(req.params.nome)
-     console.log(req.params.nome)
+app.route('/').get((req,res)=> {
+     res.send(req.query)
+     console.log(req.query)
 })
 
+app.route('/about/user').get((req,res)=> {
+     res.send(req.query)
+     console.log(req.query)
+})
+
+// a sintaxe da url é:
+//localhost:3000/?nome=Gustavo
+//localhost:3000/?nome=Gustavo&cidade=Rio de Janeiro
